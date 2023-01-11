@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: php-login
+  name: php-login
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-login
+  template:
+    metadata:
+      labels:
+        app: php-login
+    spec:
+      containers:
+        - image: quay.io/openshift-pipeline/vote-ui:latest
+          imagePullPolicy: Always
+          name: php-login
+          ports:
+            - containerPort: 8080
+              protocol: TCP
