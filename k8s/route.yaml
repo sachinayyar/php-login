@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: php-login
+  name: php-login
+spec:
+  port:
+    targetPort: 8080-tcp
+  to:
+    kind: Service
+    name: php-login
+    weight: 100
